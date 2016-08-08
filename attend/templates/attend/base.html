@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<title>{% block title %} {% endblock %}</title>
+		{% load staticfiles %}
+		<link rel="stylesheet" type="text/css" href="{% static 'attend/css/style.css' %}">
+		<link rel="stylesheet" href="{% static 'attend/bootstrap/css/bootstrap.min.css' %}">
+	</head>
+	<body>
+		<div class="container">
+			<h1>Attendence Manager</h1>
+			<nav class="navbar navbar-default" role="navigation">
+				<div>
+					<ul class="nav navbar-nav navbar-left">
+						<li><a href="{% url 'attend:index' %}">Home</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Contact Us</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="{% url 'attend:index' %}">Log In</a></li>
+						<li><a href="{% url 'attend:register' %}">Register</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+		{% block body %} {% endblock %}
+	</body>
+</html>
+

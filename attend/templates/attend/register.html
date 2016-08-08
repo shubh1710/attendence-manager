@@ -1,0 +1,41 @@
+{% extends 'attend/base.html' %}
+{% block title %}Register{% endblock %}
+{% block body %}
+<div class="containter">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-2">
+			<h3>Register</h3>
+			<form class="form-horizontal" role="form" method="post" action=" " enctype="multipart/form-data">
+			{% csrf_token %}
+				<div class="form-group">
+					<label for="username" class="control-label col-md-2">Username:</label>
+					<div class="col-md-5">
+						<input type="text" class="form-control" name="username" placeholder="Enter Username">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="password" class="col-md-2 control-label">Password:</label>
+					<div class="col-md-5">
+						<input type="password" class="form-control" name="password" placeholder="Enter Password">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="email" class="col-md-2 control-label">Email:</label>
+					<div class="col-md-5">
+						<input type="text" class="form-control" name="email" placeholder="Enter Email">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="col-md-6">
+						<button type="submit" class="btn btn-primary">Register</button>
+					</div>
+				</div>
+				<div class="panel-footer">
+                    Already have an account? <a href="{% url 'attend:index' %}">Click here</a> to log in.
+                </div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
