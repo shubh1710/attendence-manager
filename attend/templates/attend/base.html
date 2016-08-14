@@ -1,7 +1,6 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 		<title>{% block title %} {% endblock %}</title>
 		{% load staticfiles %}
 		<link rel="stylesheet" type="text/css" href="{% static 'attend/css/style.css' %}">
@@ -13,27 +12,48 @@
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+
     </head>
-	</head>
+	
 	<body>
-		<div class="container">
-			<h1>Attendence Manager</h1>
-			<nav class="navbar navbar-default" role="navigation">
-				<div>
-					<ul class="nav navbar-nav navbar-left">
-						<li><a href="{% url 'attend:index' %}">Home</a></li>
-						<li><a href="#">About</a></li>
-						<li><a href="#">Contact Us</a></li>
-					</ul>
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="{% url 'attend:index' %}">Log In</a></li>
-						<li><a href="{% url 'attend:register' %}">Register</a></li>
-					</ul>
-				</div>
-			</nav>
-		</div>
+  
+  	<nav>
+  		<div class="container-fluid">
+    <div class="nav-wrapper">
+       <a href="#" class="brand-logo center">Attendence Manager</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="{% url 'attend:index' %}">Home</a></li>
+		<li><a href="#">About</a></li>
+		<li><a href="#">Contact Us</a></li>
+      </ul>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		<li><a href="{% url 'attend:index' %}">Log In</a></li>
+		<li><a href="{% url 'attend:register' %}">Register</a></li>
+		</ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="{% url 'attend:index' %}">Home</a></li>
+		<li><a href="#">About</a></li>
+		<li><a href="#">Contact Us</a></li>
+		<li><a href="{% url 'attend:index' %}">Log In</a></li>
+		<li><a href="{% url 'attend:register' %}">Register</a></li>
+      </ul>
+    </div>
+    </div>
+  </nav>
+          
+  	
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+       <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+  		<script>
+    $(".button-collapse").sideNav();
+    // Initialize collapsible (uncomment the line below if you use the dropdown variation)
+    // $('.collapsible').collapsible();
+    </script>
 		{% block body %} {% endblock %}
 	</body>
 </html>
