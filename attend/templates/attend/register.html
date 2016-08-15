@@ -28,8 +28,56 @@
 				
 				<div class="form-group">
 					<div class="col-md-6">
-						<button type="submit" class="btn btn-primary">Register</button>
-					</div>
+						<button id="myBtn" class="btn waves-effect waves-light" type="submit" name="action">Register
+    						<i class="material-icons right">send</i>
+  						</button>
+  						<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">×</span>
+   <div class="containter">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-2">
+			<h3>Registation Successful</h3>
+			You have been successfully registered. <a href="{% url 'attend:index' %}">Click here</a> to log in.
+		</div>
+	</div>
+</div>
+  </div>
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+  					</div>
 				</div>
 				<div class="panel-footer">
                     Already have an account? <a href="{% url 'attend:index' %}">Click here</a> to log in.
