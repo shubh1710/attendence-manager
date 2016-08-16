@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="col-md-6 col-md-offset-2">
 			<h3>Register</h3>
-			<form class="form-horizontal" role="form" method="post" action=" " enctype="multipart/form-data" onsubmit="return checkPass()">
+			<form class="form-horizontal" role="form" method="post" action=" " enctype="multipart/form-data">
 			{% csrf_token %}
 				<div class="form-group">
 					<label for="username" class="control-label col-md-2">Username:</label>
@@ -44,7 +44,7 @@
 						<input type="text" class="form-control" name="email" placeholder="Enter Email">
 					</div>
 				</div>
-                <div class="form-group">
+				<div class="form-group">
 					<div class="col-md-6">
 						<button id="myBtn" class="btn waves-effect waves-light" type="submit" name="action">Register
     						<i class="material-icons right">send</i>
@@ -82,5 +82,4 @@
 		</div>
 	</div>
 </div>
-
 {% endblock %}
