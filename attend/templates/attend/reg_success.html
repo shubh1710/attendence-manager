@@ -1,0 +1,12 @@
+{% extends 'attend/base.html' %}
+{% block title %}Registration Success{% endblock %}
+{% block body %}
+<div class="containter">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-2">
+			<h3>Registation Successful</h3>
+			You have been successfully registered. <a href="{% url 'attend:index' %}">Click here</a> to log in.
+		</div>
+	</div>
+</div>
+{% endblock %}

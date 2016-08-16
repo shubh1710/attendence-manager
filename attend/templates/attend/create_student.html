@@ -1,0 +1,26 @@
+{% extends 'attend/base-account.html' %}
+{% block title %}Add Student{% endblock %}
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-2">
+			<h2>{{clas.semester}}th{{clas.branch}}{{clas.section}}-{{clas.subject}}</h2>
+			{% if error_message %}
+			<p><strong>{{ error_message }}</strong></p>
+			{% endif %}
+			<h3>Add a Student in this Class</h3>
+			<form class="form-horizontal" role="form" method="post" action=" " enctype="multipart/form-data">
+			{% csrf_token %}
+				{% include 'attend/form_template.html' %}
+				<div class="form-group">
+					<div class="col-md-6 col-md-offset-2">
+						<button class="btn waves-effect waves-light" type="submit" name="action">Submit
+   						 <i class="material-icons right">send</i>
+  						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
