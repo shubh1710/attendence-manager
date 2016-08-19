@@ -29,6 +29,7 @@
         <li><a href="{% url 'attend:home' %}">Welcome!! {{username}}</a></li>
       </ul>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
+<<<<<<< HEAD
       <li><a href="{% url 'attend:changepassword' %}">Change Password</a></li>
       <li><a href="{% url 'attend:logout' %}">Log Out</a></li>
 		  </ul>
@@ -36,6 +37,13 @@
          <li><a href="{% url 'attend:home' %}">Welcome!! {{username}}</a></li>
          <li><a href="{% url 'attend:changepassword' %}">Change Password</a></li>
 		     <li><a href="{% url 'attend:logout' %}">Log Out</a></li>
+=======
+		<li><a href="{% url 'attend:logout' %}">Log Out</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+         <li><a href="{% url 'attend:home' %}">Welcome!! {{username}}</a></li>
+		<li><a href="{% url 'attend:logout' %}">Log Out</a></li>
+>>>>>>> 0e68a81a51af6a9027cfab27691852197cfd43dc
       </ul>
     </div>
     </div>
