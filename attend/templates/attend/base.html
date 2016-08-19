@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>{% block title %} {% endblock %}</title>
+		{% load staticfiles %}
+		<link rel="stylesheet" type="text/css" href="{% static 'attend/style.css' %}">
+		<link rel="stylesheet" href="{% static 'attend/bootstrap/css/bootstrap.min.css' %}">
+		 <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+      <link href="my-styles.css" rel="stylesheet" media="screen">
+      <style>
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+</style>
+    </head>
+	
+	<body>
+    
+  	<nav>
+  		<div class="container-fluid">
+    <div class="nav-wrapper">
+       <div class="brand-logo center">Attendence Manager</div>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="{% url 'attend:index' %}">Home</a></li>
+		<li><a href="#">About</a></li>
+		<li><a href="{% url 'attend:contact' %}">Contact Us</a></li>
+      </ul>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		<li><a href="{% url 'attend:index' %}">Log In</a></li>
+		<li><a href="{% url 'attend:register' %}">Register</a></li>
+		</ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="{% url 'attend:index' %}">Home</a></li>
+		    <li><a href="#">About</a></li>
+		    <li><a href="{% url 'attend:contact' %}">Contact Us</a></li>
+		    <li><a href="{% url 'attend:index' %}">Log In</a></li>
+		    <li><a href="{% url 'attend:register' %}">Register</a></li>
+      </ul>
+    </div>
+    </div>
+  </nav>
+    
+        
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+       <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+  		<script>
+    $(".button-collapse").sideNav();
+    // Initialize collapsible (uncomment the line below if you use the dropdown variation)
+    // $('.collapsible').collapsible();
+     
+    </script>
+		{% block body %} {% endblock %}
+	</body>
+</html>
+

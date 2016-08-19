@@ -1,0 +1,53 @@
+{% extends 'attend/base.html' %}
+{% block title %}Log In{% endblock %}
+{% block body %}
+<div class="containter">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-2">
+            {% if message %}
+            <h6><strong>{{ message }}</strong></h6>
+            {% endif %}
+			<h3>Log In</h3>
+			{% if error_message %}
+			<p><strong>{{ error_message }}</strong></p>
+			{% endif %}
+			<form class="form-horizontal" role="form" method="post" action="{% url 'attend:index'%}" enctype="multipart/form-data">
+			{% csrf_token %}
+				<div class="form-group">
+					<label for="username" class="control-label col-md-2">Username:</label>
+					<div class="col-md-5">
+						<input type="text" class="form-control" name="Username" placeholder="Enter Username" maxlength="20">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="password" class="col-md-2 control-label">Password:</label>
+					<div class="col-md-5">
+						<input type="password" class="form-control" name="Password" placeholder="Enter Password" maxlength="20">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-5">
+						<div class="checkbox">
+							<p>
+      							<input type="checkbox" id="test5" />
+     							 <label for="test5">Remember me</label>
+   							</p>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-6">
+						 <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+   						 <i class="material-icons right">send</i>
+  						</button>
+        
+					</div>
+				</div>
+				<div class="panel-footer">
+                    Don't have an account? <a href="{% url 'attend:register' %}">Click here</a> to register.
+                </div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

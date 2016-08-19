@@ -1,0 +1,41 @@
+{% extends 'attend/base-account.html' %}
+{% block title %}Student List{% endblock %}
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+		<h3>{{clas.semester}}th{{clas.branch}}{{clas.section}}-{{clas.subject}}</h3>
+		<h5>List of students in the Class</h5>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>STUDENT NAME</th>
+						<th>ADDMISSION NO.</th>
+						<th>UNIVERSITY ROLL NO.</th>
+						<th>EMAIL</th>
+						<th>PHONE NO.</th>
+						<th>ATTENDENCE</th>
+						<th>TOTAL CLASSES</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for student in clas.student_set.all %}
+					<tr>
+						<td>{{student.name}}</td>
+						<td>{{student.add_no}}</td>
+						<td>{{student.univ_roll_no}}</td>
+						<td>{{student.email}}</td>
+						<td>{{student.phoneno}}</td>
+						<td>{{student.count}}</td>
+						<td>{{student.total}}</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+			<div class="panel-footer">
+			 <a href="{% url 'attend:create_student' clas.id %}">Click Here</a> to Add Students to this Class
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

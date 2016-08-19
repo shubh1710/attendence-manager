@@ -1,0 +1,23 @@
+{% extends 'attend/base-account.html' %}
+{% block title %}Class List{% endblock %}
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			{% if list %}
+			<h3>List of Class</h3>
+			<ul class="list-group">
+				{% for clas in list %}
+				<a href="{% url 'attend:student_list' clas.id %}" class="list-group-item">{{clas|escape}}</a>
+				{% endfor %}
+			</ul>
+			{% else %}
+			<h2>No Class Found! Add A Class First</h2>
+			<div class="panel-footer">
+             <a href="{% url 'attend:create_class' %}">Click here</a> Add Class and Students.
+            </div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}
