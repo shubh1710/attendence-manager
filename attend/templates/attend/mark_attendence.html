@@ -3,10 +3,10 @@
 {% block body %}
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 col-md-offset-2">
+		<div class="col-md-8 col-md-offset-2">
 		<form class="form-horizontal" method="post" action="">
 		{% csrf_token %}
-				<legend><center>Mark Attendance of the Students present Today</center></legend>
+				<legend><center><h5>Mark Attendance of the Students present Today</h5></center></legend>
 				<div class="form-group">
 					{% for i in clas.student_set.all %}
 					<div class="col-md-4">

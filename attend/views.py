@@ -40,6 +40,23 @@ def register(request):
         return render(request,'attend/reg_success.html')
     return render(request,'attend/register.html')
 
+@csrf_protect
+def changepassword(request):
+    if request.user.is_authenticated:
+        if request.method=='POST':
+            username=request.user.username
+            email=request.POST['email']
+            password=request.POST['password']
+            user=User.objects.get(username=username)
+            if user.email==email:
+                user.set_password(password)
+                user.save()
+                return render(request,'attend/home.html',{'username':request.user.username,'error_message':'Password changed successfully'})
+            else:
+                return render(request,'attend/change_password.html',{'username':request.user.username,'error_message':'Invalid E-Mail Address'})
+    return render(request,'attend/change_password.html',{'username':request.user.username})
+        
+
 def home(request):
     if not request.user.is_authenticated():
         return render(request,'attend/index.html')
