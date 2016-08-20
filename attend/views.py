@@ -65,10 +65,7 @@ def home(request):
         username=user.username
         return render(request,'attend/home.html',{'username':username})
 
-<<<<<<< HEAD
 @csrf_protect
-=======
->>>>>>> 72a7b03d386a21f88b79f76f6455a6dc7b2a2499
 def create_class(request):
     if not request.user.is_authenticated():
         return render(request,'attend/index.html')
