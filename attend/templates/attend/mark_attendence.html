@@ -1,0 +1,30 @@
+{% extends 'attend/base-account.html' %}
+{% block title %}Mark Attendence{% endblock %}
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+		<form class="form-horizontal" method="post" action="">
+		{% csrf_token %}
+				<legend><center><h5>Mark Attendance of the Students present Today</h5></center></legend>
+				<div class="form-group">
+					{% for i in clas.student_set.all %}
+					<div class="col-md-4">
+  						<div class="checkbox">
+   							<label for="checkboxes-0">
+      						<input type="checkbox" name="list"  value="{{ i.name }}">
+      						{{i.name }}      
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+      			<div class="col-md-6">
+        			<button id="submitBtn" class="btn waves-effect waves-light" type="submit" name="action">Submit
+    					<i class="material-icons right">send</i>
+					</button>
+
+      			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'attend/base-account.html' %}
+{% block title %}Home{% endblock %}
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			{% if error_message %}
+            <h6><strong>{{ error_message }}</strong></h6>
+            {% endif %}
+			<div class="list-group">
+				<a href="{% url 'attend:mark_class_list' %}" class="list-group-item active">Mark Today Attendence</a>
+				<a href="{% url 'attend:class_list' %}" class="list-group-item">List of Classes and Students</a>
+				<a href="{% url 'attend:create_class' %}" class="list-group-item">Add New Class and Students</a>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
