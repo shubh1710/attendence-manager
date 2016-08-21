@@ -9,12 +9,11 @@
 				<legend><center><h5>Mark Attendance of the Students present Today</h5></center></legend>
 				<div class="form-group">
 					{% for i in clas.student_set.all %}
-					<div class="col-md-4">
-  						<div class="checkbox">
-   							<label for="checkboxes-0">
-      						<input type="checkbox" name="list"  value="{{ i.name }}">
-      						{{i.name }}      
-						</div>
+					<div class="col-md-6">
+  						<p>
+      						<input type="checkbox" class="filled-in" name="list"  value="{{ i.name }}" id="filled-in-box" />
+      						<label for="filled-in-box">{{i.name }}</label>     
+						</p>
 					</div>
 					{% endfor %}
 				</div>
