@@ -33,12 +33,12 @@ def register(request):
         username=request.POST['username']
         firstname=request.POST['firstname']
         lastname=request.POST['lastname']
-        password=request.POST['password']
+        password=request.POST['pwd1']
         email=request.POST['email']
         user=User.objects.create_user(username=username,password=password,email=email,first_name=firstname,last_name=lastname)
         user.save()
         return render(request,'attend/reg_success.html')
-    return render(request,'attend/register.html')
+    return render(request,'attend/register2.html')
 
 @csrf_protect
 def changepassword(request):
