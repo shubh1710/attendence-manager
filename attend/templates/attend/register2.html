@@ -1,0 +1,116 @@
+{% extends 'attend/base.html' %}
+{% block title %}Register{% endblock %}
+{% block body %}
+<div class="containter">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-2">
+			<h3>Register</h3>
+			<form class="form-horizontal" role="form" method="post" action=" " enctype="multipart/form-data" onsubmit="return checkForm(this);">
+			{% csrf_token %}
+				<div class="form-group">
+					<label for="username" class="control-label col-md-2">Username:</label>
+					<div class="col-md-5">
+						<input type="text" class="form-control" name="username" placeholder="Enter Username">
+					</div>
+				</div>
+                <div class="form-group">
+					<label for="firstname" class="control-label col-md-2">First Name:</label>
+					<div class="col-md-5">
+						<input type="text" class="form-control" name="firstname" placeholder="Enter First Name">
+					</div>
+				</div>
+                <div class="form-group">
+					<label for="lastname" class="control-label col-md-2">Last Name:</label>
+					<div class="col-md-5">
+						<input type="text" class="form-control" name="lastname" placeholder="Enter Last Name">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="password" class="col-md-2 control-label">Password:</label>
+					<div class="col-md-5">
+						<input id="password" type="password" class="form-control" name="pwd1" placeholder="Enter Password" required>
+					</div>
+				</div>
+                <div class="form-group">
+					<label for="repeatpassword" class="col-md-2 control-label">Confirm Password:</label>
+					<div class="col-md-5">
+						<input id="repeatpassword" type="password" class="form-control" name="pwd2" placeholder="Enter Password Again" required onkeyup="checkPass();return false;">
+					</div>
+				</div>
+                <span id="confirmMessage" class="confirmMessage"></span>
+				<div class="form-group">
+					<label for="email" class="col-md-2 control-label">Email:</label>
+					<div class="col-md-5">
+						<input type="text" class="form-control" name="email" placeholder="Enter Email">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-6">
+						<button id="myBtn" class="btn waves-effect waves-light" type="submit" name="action">Register
+    						<i class="material-icons right">send</i>
+  						</button>
+                    </div>
+                </div>
+
+				<div class="panel-footer">
+                    Already have an account? <a href="{% url 'attend:index' %}">Click here</a> to log in.
+                </div>
+                <script type="text/javascript">
+       function checkForm(form)
+  {
+    if(form.username.value == "") {
+      alert("Error: Username cannot be blank!");
+      form.username.focus();
+      return false;
+    }
+    re = /^\w+$/;
+    if(!re.test(form.username.value)) {
+      alert("Error: Username must contain only letters, numbers and underscores!");
+      form.username.focus();
+      return false;
+    }
+
+    if(form.pwd1.value != "" && form.pwd1.value == form.pwd2.value) {
+      if(form.pwd1.value.length < 6) {
+        alert("Error: Password must contain at least six characters!");
+        form.pwd1.focus();
+        return false;
+      }
+      if(form.pwd1.value == form.username.value) {
+        alert("Error: Password must be different from Username!");
+        form.pwd1.focus();
+        return false;
+      }
+      re = /[0-9]/;
+      if(!re.test(form.pwd1.value)) {
+        alert("Error: password must contain at least one number (0-9)!");
+        form.pwd1.focus();
+        return false;
+      }
+      re = /[a-z]/;
+      if(!re.test(form.pwd1.value)) {
+        alert("Error: password must contain at least one lowercase letter (a-z)!");
+        form.pwd1.focus();
+        return false;
+      }
+      re = /[A-Z]/;
+      if(!re.test(form.pwd1.value)) {
+        alert("Error: password must contain at least one uppercase letter (A-Z)!");
+        form.pwd1.focus();
+        return false;
+      }
+    } else {
+      alert("Error: Please check that you've entered and confirmed your password!");
+      form.pwd1.focus();
+      return false;
+    }
+
+   // alert("You entered a valid password: " + form.pwd1.value);
+    return true;
+  }
+     </script>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
