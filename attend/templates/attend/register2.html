@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="col-md-6 col-md-offset-2">
 			<h3>Register</h3>
-			<form class="form-horizontal" role="form" method="post" action=" " enctype="multipart/form-data">
+			<form class="form-horizontal" role="form" method="post" action=" " enctype="multipart/form-data" onsubmit="return checkForm(this);">
 			{% csrf_token %}
 				<div class="form-group">
 					<label for="username" class="control-label col-md-2">Username:</label>
@@ -28,13 +28,13 @@
 				<div class="form-group">
 					<label for="password" class="col-md-2 control-label">Password:</label>
 					<div class="col-md-5">
-						<input id="password" type="password" class="form-control" name="password" placeholder="Enter Password" required>
+						<input id="password" type="password" class="form-control" name="pwd1" placeholder="Enter Password" required>
 					</div>
 				</div>
                 <div class="form-group">
 					<label for="repeatpassword" class="col-md-2 control-label">Confirm Password:</label>
 					<div class="col-md-5">
-						<input id="repeatpassword" type="password" class="form-control" name="repeatpassword" placeholder="Enter Password Again" required onkeyup="checkPass();return false;">
+						<input id="repeatpassword" type="password" class="form-control" name="pwd2" placeholder="Enter Password Again" required onkeyup="checkPass();return false;">
 					</div>
 				</div>
                 <span id="confirmMessage" class="confirmMessage"></span>
@@ -56,28 +56,59 @@
                     Already have an account? <a href="{% url 'attend:index' %}">Click here</a> to log in.
                 </div>
                 <script type="text/javascript">
-        function checkPass()
-        {
-            var pass1=document.getElementById('password');
-            var pass2=document.getElementById('repeatpassword');
-            var message=document.getElementById('confirmMessage');
-            var goodColor="#66cc66";
-            var badColor="#ff6666";
-            if(pass1.value==pass2.value)
-            {
-                pass2.style.backgroundColor=goodColor;
-                message.style.color=goodColor;
-                message.innerHTML="Passwords Match!"
-            }
-            else
-            {
-                pass2.style.backgroundColor=badColor;
-                message.style.Color=badColor;
-                message.innerHTML="Passwords Do Not Match!"
-            }
+       function checkForm(form)
+  {
+    if(form.username.value == "") {
+      alert("Error: Username cannot be blank!");
+      form.username.focus();
+      return false;
+    }
+    re = /^\w+$/;
+    if(!re.test(form.username.value)) {
+      alert("Error: Username must contain only letters, numbers and underscores!");
+      form.username.focus();
+      return false;
+    }
 
-        }
-            </script>
+    if(form.pwd1.value != "" && form.pwd1.value == form.pwd2.value) {
+      if(form.pwd1.value.length < 6) {
+        alert("Error: Password must contain at least six characters!");
+        form.pwd1.focus();
+        return false;
+      }
+      if(form.pwd1.value == form.username.value) {
+        alert("Error: Password must be different from Username!");
+        form.pwd1.focus();
+        return false;
+      }
+      re = /[0-9]/;
+      if(!re.test(form.pwd1.value)) {
+        alert("Error: password must contain at least one number (0-9)!");
+        form.pwd1.focus();
+        return false;
+      }
+      re = /[a-z]/;
+      if(!re.test(form.pwd1.value)) {
+        alert("Error: password must contain at least one lowercase letter (a-z)!");
+        form.pwd1.focus();
+        return false;
+      }
+      re = /[A-Z]/;
+      if(!re.test(form.pwd1.value)) {
+        alert("Error: password must contain at least one uppercase letter (A-Z)!");
+        form.pwd1.focus();
+        return false;
+      }
+    } else {
+      alert("Error: Please check that you've entered and confirmed your password!");
+      form.pwd1.focus();
+      return false;
+    }
+
+   // alert("You entered a valid password: " + form.pwd1.value);
+    return true;
+  }
+     </script>
 			</form>
 		</div>
 	</div>
