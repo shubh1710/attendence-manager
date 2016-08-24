@@ -46,15 +46,15 @@ def changepassword(request):
         if request.method=='POST':
             username=request.user.username
             email=request.POST['email']
-            password=request.POST['password']
+            password=request.POST['pwd1']
             user=User.objects.get(username=username)
             if user.email==email:
                 user.set_password(password)
                 user.save()
                 return render(request,'attend/home.html',{'username':request.user.username,'error_message':'Password changed successfully'})
             else:
-                return render(request,'attend/change_password.html',{'username':request.user.username,'error_message':'Invalid E-Mail Address'})
-    return render(request,'attend/change_password.html',{'username':request.user.username})
+                return render(request,'attend/change_password2.html',{'username':request.user.username,'error_message':'Invalid E-Mail Address'})
+        return render(request,'attend/change_password2.html',{'username':request.user.username})
         
 
 def home(request):
