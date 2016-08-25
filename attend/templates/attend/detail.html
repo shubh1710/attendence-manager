@@ -8,8 +8,8 @@
 		<p><strong>{{ success_message }}</strong></p>
 		{% endif %}
 		<h3>{{clas.semester}}th{{clas.branch}}{{clas.section}}-{{clas.subject}}</h3>
-		<div class="list-group">
-			<a href="{% url 'attend:create_student' clas.id %}" class="list-group-item active">Add Student</a>
+		<div class="collection">
+			<a href="{% url 'attend:create_student' clas.id %}" class="collection-item active">Add Student</a>
 		</div>
 		<h5>List of students in the Class</h5>
 		<table class="table">
