@@ -5,6 +5,8 @@
 		{% load staticfiles %}
 		<link rel="stylesheet" type="text/css" href="{% static 'attend/style.css' %}">
 		<link rel="stylesheet" href="{% static 'attend/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'attend/animate.min.css' %}">
+
 		 <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
@@ -62,7 +64,7 @@
   	<nav>
   		<div class="container-fluid">
     <div class="nav-wrapper">
-       <div class="brand-logo center">Attendence Manager</div>
+       <div class="brand-logo center">Attendance Manager</div>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li><a href="{% url 'attend:index' %}">Home</a></li>
