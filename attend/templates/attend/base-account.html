@@ -49,6 +49,11 @@
     0%   { transform: translate(0, 0); }
     100% { transform: translate(-100%, 0); }
 }
+.btn{
+  -webkit-animation-duration: 5s;
+  /*webkit-animation-delay: 2s;
+  /*webkit-animation-iteration-count: infinite;
+}
 </style>
 	</head>
 	<body>
@@ -85,7 +90,7 @@ document.write(today);
 		  </ul>
       <ul class="side-nav" id="mobile-demo">
           <div class="card-panel " id="panel1">
-            <div class="panel2"></div>
+            <div class="panel2"></div>  
        </div>
          <li><a href="{% url 'attend:home' %}">Welcome!! {{username}}</a></li>
          <li><a href="{% url 'attend:changepassword' %}">Change Password</a></li>
@@ -97,6 +102,7 @@ document.write(today);
   <p class="marquee">
     <span id="dtText"> Welcome To Attendance Manager Mark Today Attendance</span>
 </p>
+
 		<script type="text/javascript" src="main1.js"></script>
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
@@ -109,11 +115,7 @@ document.write(today);
     });
     // Initialize collapsible (uncomment the line below if you use the dropdown variation)
     // $('.collapsible').collapsible();
-    $('.datepicker').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15 // Creates a dropdown of 15 years to control year
-  });
-   
+    
     </script>
 		{% block body %} {% endblock %}
 	</body>
