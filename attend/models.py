@@ -35,6 +35,7 @@ class Class(models.Model):
     section=models.CharField(max_length=5,choices=SEC_CHOICES)
     faculty=models.ForeignKey(User)
     subject=models.CharField(max_length=20)
+    lastmarkedAt=models.CharField(max_length=100,null=True)
     def __str__(self):
         return ('%s-%s%s-%s' % (self.semester,self.branch,self.section,self.subject))
 
@@ -45,7 +46,6 @@ class Student(models.Model):
     email=models.EmailField(max_length=50)
     phoneno=models.CharField(max_length=15)
     sclass=models.ForeignKey(Class,on_delete=models.CASCADE)
-    createdAt=models.DateField(default=datetime.date.today)
     count=models.IntegerField(default=0)
     total=models.IntegerField(default=0)
     def __str__(self):

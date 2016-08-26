@@ -6,6 +6,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import login,logout,authenticate
 from django.views.decorators.csrf import csrf_protect
 from django.core.mail import send_mail
+import datetime
 
 @csrf_protect
 def index(request):
@@ -112,16 +113,21 @@ def mark_attendence(request,clas_id):
         return render(request,'attend/index.html')
     else:
         clas=get_object_or_404(Class, pk=clas_id)
-        if request.method=='POST':
-            attendList=request.POST.getlist('list')
-            for stud in clas.student_set.all():
-                for i in attendList:
-                    if stud.name==i:
-                        stud.count=stud.count+1
-                stud.total=stud.total+1
-                stud.save()
-            return render(request,'attend/attend_success.html',{'clas':clas,'username':request.user.username})
-        return render(request,'attend/mark_attendence.html',{'clas':clas,'username':request.user.username})
+        if clas.lastmarkedAt==str(datetime.date.today()):
+            return render(request,'attend/error_mark.html',{'clas':clas,'username':request.user.username})
+        else:
+            if request.method=='POST':
+                clas.lastmarkedAt=str(datetime.date.today())
+                clas.save()
+                attendList=request.POST.getlist('list')
+                for stud in clas.student_set.all():
+                    for i in attendList:
+                        if stud.name==i:
+                            stud.count=stud.count+1
+                    stud.total=stud.total+1
+                    stud.save()
+                return render(request,'attend/attend_success.html',{'clas':clas,'username':request.user.username})
+            return render(request,'attend/mark_attendence.html',{'clas':clas,'username':request.user.username})
 
 def contact(request):
     form = ContactForm(request.POST or None)
@@ -130,8 +136,7 @@ def contact(request):
             subject=form.cleaned_data['subject']
             message=form.cleaned_data['message']
             sender=form.cleaned_data['sender']
-            send_mail('Feedback from your site: %s'%subject,message,sender,['shubhankergoyal@gmail.com'],fail_silently=False)
-            send_mail('Feedback from your site: %s'%subject,message,sender,['ragh1995@hotmail.com'],fail_silently=False)
+            send_mail('Feedback from your site: %s'%subject,message,sender,['shubhankergoyal@gmail.com','ragh1995@hotmail.com'],fail_silently=False)
             return render(request,'attend/thanks.html')
     return render(request,'attend/contact.html', {'form': form})
 

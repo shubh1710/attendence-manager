@@ -7,13 +7,13 @@ class ClassForm(ModelForm):
     class Meta:
         model=Class
         fields='__all__'
-        exclude=['faculty']
+        exclude=['faculty','lastmarkedAt']
 
 class StudentForm(ModelForm):
     class Meta:
         model=Student
         fields='__all__'
-        exclude=['sclass','createdAt','count','total']
+        exclude=['sclass','count','total']
 
 
 class ContactForm(ModelForm):
