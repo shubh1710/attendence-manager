@@ -6,9 +6,9 @@
 		<div class="col-md-6">
 			{% if list %}
 			<h3>List of Class</h3>
-			<ul class="list-group">
+			<ul class="collection">
 				{% for clas in list %}
-				<a href="{% url 'attend:mark_attendence' clas.id %}" class="list-group-item">{{clas|escape}}</a>
+				<a href="{% url 'attend:mark_attendence' clas.id %}" class="collection-item">{{clas|escape}}</a>
 				{% endfor %}
 			</ul>
 			{% else %}

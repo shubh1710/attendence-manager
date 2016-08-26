@@ -7,7 +7,7 @@
 		{% if success_message %}
 		<p><strong>{{ success_message }}</strong></p>
 		{% endif %}
-		<h3>{{clas.semester}}th{{clas.branch}}{{clas.section}}-{{clas.subject}}</h3>
+		<h3>{{clas.semester}}-{{clas.branch}}{{clas.section}}-{{clas.subject}}</h3>
 		<div class="collection">
 			<a href="{% url 'attend:create_student' clas.id %}" class="collection-item active">Add Student</a>
 		</div>
