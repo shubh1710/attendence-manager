@@ -137,6 +137,7 @@ def contact(request):
             message=form.cleaned_data['message']
             sender=form.cleaned_data['sender']
             send_mail('Feedback from your site: %s'%subject,message,sender,['shubhankergoyal@gmail.com','ragh1995@hotmail.com'],fail_silently=False)
+            return render(request,'attend/thanks.html')
     return render(request,'attend/contact.html', {'form': form})
 
 
