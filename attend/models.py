@@ -33,7 +33,7 @@ class Class(models.Model):
     branch=models.CharField(max_length=20,choices=BRANCH_CHOICES)
     semester=models.CharField(max_length=20,choices=SEM_CHOICES)
     section=models.CharField(max_length=5,choices=SEC_CHOICES)
-    faculty=models.ForeignKey(User)
+    faculty=models.ForeignKey(User,on_delete=models.CASCADE)
     subject=models.CharField(max_length=20)
     lastmarkedAt=models.CharField(max_length=100,null=True)
     def __str__(self):
